@@ -11,7 +11,7 @@
 <div class="container">
     {{!-- Lista de productos con websocket --}}
     <div class ="infoProd">
-        <h1>Lista de Productos con Socket</h1>
+        <h1>Mi  lista de productos;</h1>
             <div class="detalleProd">
             <table>
             <thead>
@@ -38,7 +38,7 @@
                         <td>{{this.status}}</td>
                         <td>{{this.stock}}</td>
                         <td>{{this.category}}</td>
-                        <td><img src="{{this.thumbnails}}" alt="Imagen Producto"></td>
+                        <td><img src="{{this.thumbnails}}" alt=""></td>
                     </tr>
                 {{/each}}
             </tbody>
@@ -46,20 +46,20 @@
             </div>
         </div>
     <div class="formulario">
-        <h1>Formulario Productos</h1>
+        <h1>Formulario de Productos</h1>
         <form id="prod-form">
             <div class="inputs">
                 <div> 
-                <input type="text" id="title" autocomplete="off" placeholder="Ingrese Titulo" required>
-                <input type="text" id="desc" autocomplete="off" placeholder="Ingrese Descripcion" required>
-                <input type="text" id="cod" autocomplete="off" placeholder="Ingrese Codigo" required>
-                <input type="text" id="price" autocomplete="off" placeholder="Ingrese Precio" required>
+                <input type="text" id="title" autocomplete="off" placeholder="Ingrese el Titulo" required>
+                <input type="text" id="desc" autocomplete="off" placeholder="Ingrese la Descripcion" required>
+                <input type="text" id="cod" autocomplete="off" placeholder="Ingrese el Codigo" required>
+                <input type="text" id="price" autocomplete="off" placeholder="Ingrese el Precio" required>
             </div>
             <div>
-                <input type="text" id="status" autocomplete="off" placeholder="Ingrese Status" required>
-                <input type="text" id="stock" autocomplete="off" placeholder="Ingrese Stock" required>
-                <input type="text" id="cat" autocomplete="off" placeholder="Ingrese Categoria" required>
-                <input type="text" id="img" autocomplete="off" placeholder="Ingrese Imagen" required>
+                <input type="text" id="status" autocomplete="off" placeholder="Ingrese el Status" required>
+                <input type="text" id="stock" autocomplete="off" placeholder="Ingrese el Stock" required>
+                <input type="text" id="cat" autocomplete="off" placeholder="Ingrese la Categoria" required>
+                <input type="text" id="img" autocomplete="off" placeholder="Ingrese laImagen" required>
             </div>
             </div>
             <div class="botones">
@@ -69,6 +69,6 @@
     </div>
 </div>
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/realTimeProducts.js"></script>
+<script src="/js/TimeProducts.js"></script>
 </body>
 </html>

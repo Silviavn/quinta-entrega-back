@@ -1,69 +1,67 @@
 import {promises as fs} from 'fs'
 import {nanoid} from "nanoid"
-import ProductManager from './ProductManager.js'
 
-//Se accede a funciones de ProductManager definiendo prodAll
-const prodAll = new ProductManager()
-
-class CartManager {
+class ProductManager {
     constructor(){
-        this.path = "./src/models/carts.json"
+        this.path = "./src/models/products.json"
     }
-    //Funcion para validar existencia de carros utilizando _readCartss
+    
     _exist = async (id) => {
-        let carts = await this._readCarts()
-        return carts.find(cart => cart.id === id)
+        let products = await this._readProducts()
+        return products.find(prod => prod.id === id)
     }
-    //Se obtienen los carros desde path
-    _readCarts = async () => {
-        let carts = await fs.readFile(this.path, "utf-8")
-        return JSON.parse(carts)
+
+    _readProducts = async () => {
+        let products = await fs.readFile(this.path, "utf-8")
+        return JSON.parse(products)
     }
-    //Se agrega el carro en archivo JSON
-    _writeCarts = async (cart) => {
-        await fs.writeFile(this.path, JSON.stringify(cart))
+   
+    _writeProducts = async (product) => {
+        await fs.writeFile(this.path, JSON.stringify(product))
     }
-    //Se obtienen los carros desde _readCarts
-    getCarts = async () => {
-        return await this._readCarts()
+   
+    addProducts = async (product) => {
+        let productsAct = await this._readProducts()
+        product.id = nanoid()
+        let productAll = [...productsAct, product]
+        await this._writeProducts(productAll)
+        return "El producto a sido agregado"
     }
-    //Se agregan los carros con _writeCarts y se obtienen los carritos actuales con _readCarts
-    addCarts = async () => {
-        let cartsAct = await this._readCarts()
-        let id = nanoid()
-        let cartsConcat = [{id:id, products : []}, ...cartsAct]
-        await this._writeCarts(cartsConcat)
-        return "Cart Added"
+    
+    updProducts = async (id, product) => {
+        let prodId = await this._exist(id)
+        if(!prodId) return "El producto no a sido encontrado"
+        await this.delProducts(id)
+
+        let productAct = await this._readProducts()
+        
+        let products = [{...product, id : id}, ...productAct]
+        
+        await this._writeProducts(products)
+        return "Producto actualizado"
     }
-    //Se obtiene carro por id
-    getCartById = async (id) => {
-        let cartId = await this._exist(id)
-        if(!cartId) return "Cart Not Found"
-        return cartId
+   
+    getProducts = async () => {
+        return await this._readProducts()
     }
-    //Se agrega el producto en el carro entregando por parametros el id del carro con el id del producto
-    addProductInCart = async (cartId, prodId) => {
-        //Se valida la existencia del id del carro y del producto
-        let carttId = await this._exist(cartId)
-        if(!carttId) return "Cart Not Found"
-        let proddId = await prodAll._exist(prodId)
-        if(!proddId) return "Prod Not Found"
-        //-----------------------------------------------------------------------//
-        let cartsAll = await this.getCarts()
-        let cartFilter = cartsAll.filter((cart) => cart.id != cartId)
-        if(carttId.products.some((prod) => prod.id === prodId)){
-            let moreProd  = carttId.products.find((prod) => prod.id === prodId)
-            moreProd .quantity++
-            let cartsConcat = [carttId, ...cartFilter]
-            await this._writeCarts(cartsConcat)
-            return "Product Added in Cart"
+    
+    getProdById = async (id) => {
+        let prodId = await this._exist(id)
+        if(!prodId) return "El producto no a sido encontrado"
+        return prodId
+    }
+
+    delProducts = async (id) => {
+        let products = await this._readProducts()
+       
+        let existProd = products.some(prod => prod.id === id)
+        if(existProd){
+            let filterProducts = products.filter(prod => prod.id != id)
+            await this._writeProducts(filterProducts)
+            return "El producto a sido eliminado"
         }
-        //-----------------------------------------------------------------------//
-        carttId.products.push({id:prodId, quantity: 1})
-        let cartsConcat = [ carttId, ...cartFilter]
-        await this._writeCarts(cartsConcat)
-        return "Product in Cart"
+        return "El ID del producto ingresado no se ha podido encontrar"      
     }
 }
 
-export default CartManager
+export default ProductManager
