@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "title": "Pan",
+        "description": "Nuestro pan esta fresco todos los dias",
+        "price": 3000,
+        "thumbnail": "https://res.cloudinary.com/dmicwl879/image/upload/v1684832066/proyecto%20js%20carrito/pan_i3yapn.jpg",
+        "code": "111",
+        "stock": 5
+    },
+    {
+        "id": 2,
+        "title": "Aceite",
+        "description": "Nuestro aceite de maravilla 100% natural",
+        "price": 3000,
+        "thumbnail": "https://res.cloudinary.com/dmicwl879/image/upload/v1684832338/proyecto%20js%20carrito/aceiteolivagirasol_thnmli.webp",
+        "code": "222",
+        "stock": 5 
+    },
+    {
+        "id": 3,
+        "title": "Arroz",
+        "description": "Nuestro arroz tiene diferentes grosores",
+        "price": 4000,
+        "thumbnail": "https://res.cloudinary.com/dmicwl879/image/upload/v1684832369/proyecto%20js%20carrito/1634751167325_j008us.jpg",
+        "code": "333",
+        "stock": 5
+    },
+    {
+        "id": 4,
+        "title": "Fideos",
+        "description": "Tenemos fideos de todas las calidades, se tardan mas o menos tiempo en cocer",
+        "price": 1200,
+        "thumbnail": "https://res.cloudinary.com/dmicwl879/image/upload/v1684832385/proyecto%20js%20carrito/istockphoto-185065945-612x612_hwlcnk.jpg",
+        "code": "444",
+        "stock": 5 
+    },
+    {
+        "id": 5,
+        "title": "Salsa",
+        "description": "Salsa de tomate 100% organica",
+        "price": 1500,
+        "thumbnail": "https://res.cloudinary.com/dmicwl879/image/upload/v1684832398/proyecto%20js%20carrito/salsa-de-tomate-casera-des_wwoleo.jpg",
+        "code": "555",
+        "stock": 5
+    },
+    {
+        "id": 6,
+        "title": "Sal",
+        "description": "Sal de mar 100% organica",
+        "price": 6500,
+        "thumbnail": "https://res.cloudinary.com/dmicwl879/image/upload/v1684832398/proyecto%20js%20carrito/salsa-de-tomate-casera-des_wwoleo.jpg",
+        "code": "666",
+        "stock": 5 
+    }
+]

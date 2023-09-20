@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+    
+<div class="container">
+    {{!-- Lista de productos con websocket --}}
+    <div class ="infoProd">
+        <h1>Lista de Productos con Socket</h1>
+            <div class="detalleProd">
+            <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Thumbnails</th>
+                    <th>Descripción</th>
+                    <th>Código</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Stock</th>
+                    <th>Categoría</th>
+                    <th>Thumbnails</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each totalProd}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td>{{this.thumbnails}}</td>
+                        <td>{{this.description}}</td>
+                        <td>{{this.code}}</td>
+                        <td>{{this.price}}</td>
+                        <td>{{this.status}}</td>
+                        <td>{{this.stock}}</td>
+                        <td>{{this.category}}</td>
+                        <td><img src="{{this.thumbnails}}" alt="Imagen Producto"></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+            </div>
+        </div>
+    <div class="formulario">
+        <h1>Formulario Productos</h1>
+        <form id="prod-form">
+            <div class="inputs">
+                <div> 
+                <input type="text" id="title" autocomplete="off" placeholder="Ingrese Titulo" required>
+                <input type="text" id="desc" autocomplete="off" placeholder="Ingrese Descripcion" required>
+                <input type="text" id="cod" autocomplete="off" placeholder="Ingrese Codigo" required>
+                <input type="text" id="price" autocomplete="off" placeholder="Ingrese Precio" required>
+            </div>
+            <div>
+                <input type="text" id="status" autocomplete="off" placeholder="Ingrese Status" required>
+                <input type="text" id="stock" autocomplete="off" placeholder="Ingrese Stock" required>
+                <input type="text" id="cat" autocomplete="off" placeholder="Ingrese Categoria" required>
+                <input type="text" id="img" autocomplete="off" placeholder="Ingrese Imagen" required>
+            </div>
+            </div>
+            <div class="botones">
+                <button type="submit">Crear</button>
+            </div>    
+        </form>
+    </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realTimeProducts.js"></script>
+</body>
+</html>
